@@ -42,7 +42,7 @@ VITE_SUPABASE_ANON_KEY         # public browser configuration
 
 Run the SQL migrations in `supabase/migrations/` in order before enabling account-backed incident storage. Never commit `.env.local`, service-role keys, Gemini keys, or model weights. `.env.example` documents the expected names and is safe to copy for local setup.
 
-This monorepo contains a FastAPI cyberbullying model adapter and a Chrome/Edge Manifest V3 side-panel extension. The extension sends text to `http://127.0.0.1:8000/predict` and falls back to local safety rules when the API is unavailable or returns an invalid response.
+This monorepo contains a FastAPI cyberbullying model adapter and a Chrome/Edge Manifest V3 side-panel extension. The extension sends text to `http://127.0.0.1:8000/predict` and never fabricates a result when the AI service is unavailable.
 
 ## Structure
 
@@ -166,8 +166,8 @@ The extension only needs the public Supabase URL and anon key. Never put
 ## Reliability behavior
 
 - Network errors, timeouts, non-2xx responses, malformed JSON, missing confidence, unknown labels, and `sentiment: []` are handled without crashing.
-- When the API cannot provide a valid result, the panel displays exactly: **Model unavailable — using local safety rules**.
-- Explicit abuse/harm phrases such as `I hate you` and `kill yourself` receive High Risk and at least 80/100 in the local fallback.
+- When the API cannot provide a valid result, the panel shows an unavailable error and does not display fabricated risk values.
+- Explicit abuse/harm phrases such as `I hate you` and `kill yourself` are evaluated by the configured AI model and must be verified through the model-backed API.
 - For backend labels, the highest matching category confidence drives the risk score.
 - Recent results are stored only in `chrome.storage.local`.
 - CORS is enabled for Chrome/Edge extension requests.
@@ -203,6 +203,6 @@ The smoke test reuses an already-running server when the selected port is occupi
 - **Model directory not found:** copy the supplied folder unchanged to `backend/model_save`.
 - **PyTorch installation fails:** use Python 3.10 and recreate `backend/.venv`.
 - **The virtual environment points to a missing Python:** install Python 3.10, then run `start-backend.bat`; the script preserves the broken environment as `backend/.venv.broken` and creates a fresh one.
-- **Panel says model unavailable:** confirm the API is running, browse to `/health`, and check that `/predict` is reachable. The panel will still use its local rules.
+- **AI analysis unavailable:** confirm the API is running, browse to `/health`, and check that `/predict` is reachable. No fallback analysis is shown.
 - **Current page is empty:** browser-protected pages may prevent script access; highlight and analyze text instead.
 - **CORS error:** use the provided API URL and restart the backend after changing configuration.
