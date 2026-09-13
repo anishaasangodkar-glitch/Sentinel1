@@ -1,0 +1,46 @@
+{
+  "name": "sentinel-safety-platform",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "tsx server/index.ts",
+    "dev:full": "concurrently \"npm run dev:api\" \"npm run dev\"",
+    "build": "tsc -b && vite build",
+    "build:api": "tsc -p tsconfig.server.json --noEmit",
+    "preview": "vite preview",
+    "lint": "tsc -b --pretty false",
+    "test": "tsx --test src/services/riskEngine.test.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest",
+    "@vitejs/plugin-react": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "i18next": "^26.4.2",
+    "jszip": "^3.10.2",
+    "lucide-react": "latest",
+    "multer": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-i18next": "^17.0.13",
+    "react-router-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "latest",
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/multer": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "concurrently": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest",
+    "tsx": "^4.23.13",
+    "typescript": "latest"
+  }
+}

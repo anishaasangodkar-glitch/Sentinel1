@@ -1,0 +1,441 @@
+:root {
+  color: #172026;
+  background: #f7f9fb;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100vh;
+  padding: 14px;
+}
+
+.screenshotTools {
+  background: #ffffff;
+  border: 1px solid #e0e7ec;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.screenshotHeading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 9px;
+}
+
+.screenshotHeading span {
+  align-items: center;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 7px;
+}
+
+.screenshotHeading small {
+  color: #657680;
+  font-size: 11px;
+}
+
+.screenshotPicker {
+  align-items: center;
+  border: 1px dashed #b9c9d2;
+  border-radius: 8px;
+  color: #536672;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  min-height: 58px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.screenshotPicker input {
+  display: none;
+}
+
+.screenshotPicker img {
+  display: block;
+  max-height: 120px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.screenshotActions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.screenshotActions span {
+  color: #657680;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.screenshotActions button,
+.loginCard form button {
+  background: #102733;
+  border: 0;
+  border-radius: 7px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 9px 11px;
+}
+
+.screenshotActions button:disabled,
+.loginCard form button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
+.loginOverlay {
+  align-items: center;
+  background: rgba(16, 39, 51, .45);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 16px;
+  position: fixed;
+  z-index: 5;
+}
+
+.loginCard {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(16, 39, 51, .2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 340px;
+  padding: 18px;
+  position: relative;
+  width: 100%;
+}
+
+.loginCard h2,
+.loginCard p {
+  margin: 0;
+}
+
+.loginCard h2 {
+  font-size: 17px;
+}
+
+.loginCard p {
+  color: #536672;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.loginCard form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loginCard input {
+  border: 1px solid #cfdae1;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.closeButton {
+  background: transparent;
+  border: 0;
+  color: #536672;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.textButton {
+  background: transparent;
+  border: 0;
+  color: #245d72;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.errorNotice {
+  color: #a12b24;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 4px 0;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  font-weight: 800;
+  gap: 8px;
+}
+
+.brandIcon {
+  align-items: center;
+  background: #102733;
+  border-radius: 7px;
+  color: #ffffff;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+}
+
+.mode {
+  color: #5d6d78;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.empty,
+.assessment {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty {
+  align-items: center;
+  color: #40515c;
+  justify-content: center;
+  min-height: 360px;
+  text-align: center;
+}
+
+.empty h1,
+.assessment h1,
+.assessment h2,
+.panel h3 {
+  margin: 0;
+}
+
+.empty p,
+.explanation,
+.muted {
+  color: #536672;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.permissionState {
+  justify-content: flex-start;
+  min-height: 300px;
+  padding-top: 42px;
+}
+
+.permissionState .saveButton {
+  max-width: 220px;
+}
+
+.permissionError {
+  color: #a12b24 !important;
+  font-size: 12px;
+}
+
+.scoreBand {
+  align-items: center;
+  background: #edf7f2;
+  border: 1px solid #cfe8da;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+}
+
+.assessment.medium .scoreBand {
+  background: #fff7df;
+  border-color: #ead898;
+}
+
+.assessment.high .scoreBand {
+  background: #fff0ef;
+  border-color: #f0b8b2;
+  color: #8c1d18;
+}
+
+.severity {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  margin: 0 0 4px;
+}
+
+.assessment h1 {
+  font-size: 34px;
+  letter-spacing: 0;
+}
+
+.assessment h2 {
+  color: #172026;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e0e7ec;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.panel h3 {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.dnaList,
+.signals,
+.chain,
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.dnaItem {
+  display: grid;
+  gap: 7px;
+  grid-template-columns: 120px 1fr;
+  font-size: 12px;
+}
+
+meter {
+  height: 12px;
+  width: 100%;
+}
+
+.signal {
+  border-left: 3px solid #f05a4f;
+  padding-left: 9px;
+}
+
+.signal strong,
+.chain strong {
+  display: block;
+  font-size: 12px;
+}
+
+.signal p,
+.chain span {
+  color: #536672;
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 3px 0 0;
+}
+
+.chain,
+.actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chain li {
+  border-bottom: 1px solid #edf1f4;
+  padding-bottom: 9px;
+}
+
+.chain li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.actions li {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.saveButton,
+.urlRow button {
+  align-items: center;
+  background: #102733;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 800;
+  gap: 8px;
+  justify-content: center;
+}
+
+.saveButton {
+  min-height: 42px;
+  width: 100%;
+}
+
+.urlForm {
+  background: #ffffff;
+  border: 1px solid #e0e7ec;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding: 12px;
+}
+
+.urlForm label {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.urlRow {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 42px;
+}
+
+.urlRow input {
+  border: 1px solid #cfdae1;
+  border-radius: 8px;
+  min-width: 0;
+  padding: 10px;
+}
+
+.fallbackNotice {
+  background: #fff5df;
+  border: 1px solid #f0d39b;
+  border-radius: 8px;
+  color: #785b25;
+  font-size: 12px;
+  margin: 12px 0;
+  padding: 10px;
+}

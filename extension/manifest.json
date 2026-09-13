@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Sentinel Digital Safety",
+  "description": "Analyze pages, selected text, and URLs for scam and manipulation risk.",
+  "version": "0.1.0",
+  "permissions": ["activeTab", "contextMenus", "sidePanel", "storage", "scripting"],
+  "host_permissions": ["http://127.0.0.1:8000/*", "http://localhost:8000/*"],
+  "optional_host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Analyze with Sentinel"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  }
+}
